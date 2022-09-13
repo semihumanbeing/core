@@ -17,7 +17,7 @@ class StatefulServiceTest {
         // Thread A 사용자 10000원 주문
         int userA = statefulService1.order("userA", 10000);
         // Thread B 사용자 20000원 주문
-        int userB = statefulService1.order("userB", 20000);
+        int userB = statefulService2.order("userB", 20000);
 
         // Thread A 사용자 주문 금액 조회
         int price = statefulService1.getPrice();
@@ -25,7 +25,7 @@ class StatefulServiceTest {
 
         // 공유되는 필드가 변경되어 값이 틀리게 나온다.
         // 싱글톤 필드는 항상 무상태로 설정해야한다.
-        Assertions.assertThat(statefulService1.getPrice()).isEqualTo(20000);
+        Assertions.assertThat(statefulService1.getPrice()).isEqualTo(0);
     }
 
     static class TestConfig{
