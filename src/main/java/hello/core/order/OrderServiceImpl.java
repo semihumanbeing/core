@@ -22,7 +22,9 @@ public class OrderServiceImpl implements OrderService {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
-
+    // 생성자 주입: 불변, 필수 의존관계에 사용한다
+    // Setter injection 보다 먼저 이루어진다.
+    
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
         // 회원정보 조회
